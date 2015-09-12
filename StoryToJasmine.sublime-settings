@@ -6,7 +6,7 @@
   "pivotaltracker_api_token": "",
 
   // Story key words
-  "word_Give": "Dado ",
+  "word_Given": "Dado ",
   "word_And": "Y ",
   "word_When": "Cuando ",
   "word_Then": "Entonces ",
