@@ -1,14 +1,14 @@
 [
   {
-    "caption": "Stroy to Jasmine: Get story",
+    "caption": "Story to Jasmine: Get story",
     "command": "story_to_jasmine"
   },
   {
-    "caption": "Stroy to Jasmine: Set PivotalTraker Api Token",
+    "caption": "Story to Jasmine: Set PivotalTraker Api Token",
     "command": "story_to_jasmine_apitoken"
   },
   {
-    "caption": "Stroy to Jasmine: Set project",
+    "caption": "Story to Jasmine: Set project",
     "command": "story_to_jasmine_project"
   },
 ]
