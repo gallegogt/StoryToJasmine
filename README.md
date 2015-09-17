@@ -1,2 +1,3 @@
 # StoryToJasmine
-SublimeTex plugins for BDD based on Story using Pivotaltracker and convert that story on jasmine specs
+
+SublimeText plugin for BDD that retrieves a Story from Pivotaltracker and inserts it to the current document as a jasmine spec.
