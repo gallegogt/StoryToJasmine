@@ -32,7 +32,7 @@ class StoryToJasmineApitokenCommand(sublime_plugin.TextCommand):
 
   def run(self, edit):
     # # show field to input to obtaining Api Token
-    self.view.window().show_input_panel('PivotalTraker Api Token',
+    self.view.window().show_input_panel('PivotalTracker Api Token',
       '', self.on_done, None, None)
 
 
