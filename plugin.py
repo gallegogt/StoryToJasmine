@@ -32,7 +32,7 @@ class StoryToJasmineApitokenCommand(sublime_plugin.TextCommand):
 
   def run(self, edit):
     # # show field to input to obtaining Api Token
-    self.view.window().show_input_panel('PivotalTraker Api Token',
+    self.view.window().show_input_panel('PivotalTracker Api Token',
       '', self.on_done, None, None)
 
 
@@ -146,7 +146,7 @@ class StoryParser(object):
     def __init__(self):
       self.describe_list = []
       self.it_list = []
-      self.word_Give = PluginUtils.get_pref('word_Give')
+      self.word_Given = PluginUtils.get_pref('word_Given')
       self.word_And = PluginUtils.get_pref('word_And')
       self.word_When = PluginUtils.get_pref('word_When')
       self.word_Then = PluginUtils.get_pref('word_Then')
@@ -157,7 +157,7 @@ class StoryParser(object):
       description_list = story_text.split('\n')
       found_when = False
       for row in description_list:
-        if row.startswith(self.word_Give):
+        if row.startswith(self.word_Given):
           self.describe_list.append(row)
         elif row.startswith(self.word_And):
           if not found_when:
