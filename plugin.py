@@ -5,6 +5,7 @@ import sublime, sublime_plugin
 from urllib.request import Request, urlopen
 import json
 import os
+import re
 
 #
 # Opciones de configuracion
@@ -114,6 +115,8 @@ class PluginUtils:
     """
     if projectID == '' or storyID == '' or apiToken == '':
       return
+    # if story contains leading '#' remove it
+    storyID = re.sub('^#', '', storyID)
     url = PIVOTAL_TRACKER_URL.format(projectID, storyID)
     req = Request(url)
     req.add_header('X-TrackerToken', apiToken)
