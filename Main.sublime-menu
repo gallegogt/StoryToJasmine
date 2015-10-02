@@ -1,0 +1,23 @@
+[{
+  "id": "tools",
+  "children": [{
+    "id": "story_to_jasmine_tools",
+    "caption": "Story to Jasmine",
+    "children": [{
+      "caption": "Set Plugin Options",
+      "command": "story_to_jasmine_options"
+    }]
+  }]
+}, {
+  "id": "preferences",
+  "children": [{
+    "id": "package-settings",
+    "children": [{
+      "caption": "Story to Jasmine",
+      "children": [{
+        "caption": "Set Plugin Options",
+        "command": "story_to_jasmine_options"
+      }]
+    }]
+  }]
+}]

@@ -92,6 +92,13 @@ class StoryToJasmineInsertText(sublime_plugin.TextCommand):
     rst = sp.parser(args['description'], args['story_id'])
     self.view.insert(edit, self.view.sel()[0].begin(), rst)
 
+
+class StoryToJasmineOptionsCommand(sublime_plugin.TextCommand):
+
+  def run(self, edit):
+    PluginUtils.open_sublime_settings(self.view.window())
+
+
 class PluginUtils:
   """
   Helper class
@@ -103,6 +110,10 @@ class PluginUtils:
   @staticmethod
   def set_pref(key, value):
     return sublime.load_settings(SETTINGS_FILE).set(key, value)
+
+  @staticmethod
+  def open_sublime_settings(window):
+    window.open_file(PLUGIN_FOLDER + "/" + SETTINGS_FILE)
 
   @staticmethod
   def open_sublime_settings(window):
