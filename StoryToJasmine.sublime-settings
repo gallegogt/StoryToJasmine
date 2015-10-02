@@ -1,17 +1,17 @@
 {
-  // Id for de current project
+  // default current project
   "current_project": "",
 
-  // PivotalTracker Api Token
+  // default PivotalTracker Api Token
   "pivotaltracker_api_token": "",
 
-  // Story key words
+  // story keywords (change the keywords values for other languages)
   "word_Given": "Dado ",
   "word_And": "Y ",
   "word_When": "Cuando ",
   "word_Then": "Entonces ",
 
-  // Jasmine simple template
+  // jasmine simple template
   "describe_template": "describe('{0}', function() {{{1}}});",
   "it_template": "it('{0} [ID:#{1}]', function() {2});\n\n"
 }
