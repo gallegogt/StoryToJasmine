@@ -160,10 +160,10 @@ class StoryParser(object):
     def __init__(self):
       self.describe_list = []
       self.it_list = []
-      self.word_Given = PluginUtils.get_pref('word_Given')
-      self.word_And = PluginUtils.get_pref('word_And')
-      self.word_When = PluginUtils.get_pref('word_When')
-      self.word_Then = PluginUtils.get_pref('word_Then')
+      self.word_Given = PluginUtils.get_pref('word_Given').strip() + ' '
+      self.word_And = PluginUtils.get_pref('word_And').strip() + ' '
+      self.word_When = PluginUtils.get_pref('word_When').strip() + ' '
+      self.word_Then = PluginUtils.get_pref('word_Then').strip() + ' '
       self.it_template = PluginUtils.get_pref('it_template')
       self.describe_template = PluginUtils.get_pref('describe_template')
 
@@ -214,6 +214,10 @@ class StoryParser(object):
       @return Javascript its text
       """
       it_text = '\n'
+
+      if story_id[0] == '#':
+        story_id = story_id[1:]
+
       for it in self.it_list:
         try:
           space = '%s' % (' ' * (describe_len * self.WITH_SPACE_LENGTH))
