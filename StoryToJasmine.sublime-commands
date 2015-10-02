@@ -4,7 +4,7 @@
     "command": "story_to_jasmine"
   },
   {
-    "caption": "Stroy to Jasmine: Set PivotalTracker Api Token",
+    "caption": "Story to Jasmine: Set PivotalTracker Api Token",
     "command": "story_to_jasmine_apitoken"
   },
   {
