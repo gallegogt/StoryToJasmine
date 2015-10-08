@@ -4,6 +4,14 @@ SublimeText plugin for BDD that retrieves a Story from Pivotaltracker and insert
 
 ## Installation
 
+The shorter way of doing this is:
+### Through [Sublime Package Manager](https://packagecontrol.io)
+
+* `Ctrl+Shift+P` or &#8984;`+Shift+P` in Linux/Windows/OS X
+* type `install`, select `Package Control: Install Package`
+* type and select `StorytoJasmine`
+ 
+
 ### Manually
 
 Make sure you use the right Sublime Text folder. For example, on OS X, packages for version 2 are in `~/Library/Application\ Support/Sublime\ Text\ 2`, while version 3 is labeled `~/Library/Application\ Support/Sublime\ Text\ 3`.
