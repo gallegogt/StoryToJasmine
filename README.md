@@ -4,7 +4,7 @@ SublimeText plugin for BDD that retrieves a Story from Pivotaltracker and insert
 
 ## Installation
 
-The shorter way of doing this is:
+The shorter way of doing this is (Not yet):
 ### Through [Sublime Package Manager](https://packagecontrol.io)
 
 * `Ctrl+Shift+P` or &#8984;`+Shift+P` in Linux/Windows/OS X
