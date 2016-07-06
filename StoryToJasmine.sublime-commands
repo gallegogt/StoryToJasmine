@@ -11,4 +11,8 @@
     "caption": "Story to Jasmine: Set project",
     "command": "story_to_jasmine_project"
   },
+  {
+    "caption": "Story to Jasmine: Select project from list",
+    "command": "story_to_jasmine_select_project_from_list"
+  },
 ]

@@ -8,6 +8,8 @@ and inserts it to the current document as a jasmine spec.
 
 import sublime, sublime_plugin
 from urllib.request import Request, urlopen
+from .s2j import S2J, Singleton
+
 import json
 import os
 import re
@@ -35,6 +37,8 @@ class StoryToJasmineApitokenCommand(sublime_plugin.TextCommand):
         """
         Save Api Token in configuration file
         """
+        story2jasmine = S2J()
+        story2jasmine.set_api_token(text)
         PluginUtils.set_pref(KEY_API_TOKEN, text)
 
     def run(self, edit):
@@ -51,11 +55,14 @@ class StoryToJasmineProjectCommand(sublime_plugin.TextCommand):
     Command charge of getting the ProjectID and save it
     """
     @staticmethod
-    def on_done(text):
+    def on_done(project_id):
         """
         Save Api Token in configuration file
         """
-        PluginUtils.set_pref(KEY_CURRENT_PROJECT, text)
+        PluginUtils.set_pref(KEY_CURRENT_PROJECT, project_id)
+
+        story_to_jasmine = S2J()
+        story_to_jasmine.set_default_project_by_id(project_id)
 
     def run(self, edit):
         """
@@ -119,11 +126,59 @@ class StoryToJasmineOptionsCommand(sublime_plugin.TextCommand):
     """
     TextCommand for open plugins settings
     """
-    def run(self):
+    def run(self, edit):
         """
         Main function on text command
         """
         PluginUtils.open_sublime_settings(self.view.window())
+
+
+class StoryToJasmineSelectProjectFromListCommand(sublime_plugin.TextCommand):
+    """
+    Select project from list
+    """
+    def on_select(self, project_index):
+        """
+        This function get the story
+        """
+        self.__story_to_jasmine.set_default_project(project_index)
+
+    def run(self, edit):
+        """
+        Main function
+        """
+        self.__story_to_jasmine = S2J()
+        project_list = self.__story_to_jasmine.get_project_list()
+        self.view.window().show_quick_panel(project_list, self.on_select)
+
+
+class StoryToJasmineTestCommand(sublime_plugin.TextCommand):
+    """
+    Comand for test
+    """
+    def on_select(self, index):
+        """
+        This function get the story
+        """
+        #story_to_jasmine = S2J()
+        #story_to_jasmine.set_default_project(project_index)
+        #story_to_jasmine.set_default_project_by_id(96519)
+        print(index)
+
+    def run(self, edit):
+        """
+        Main function
+        """
+        story_to_jasmine = S2J()
+        story_to_jasmine.set_api_token('0d9fd4710ca1de1395e05ec0e3953f2d')
+
+        story_to_jasmine.set_default_project(0)
+
+        s_list = story_to_jasmine \
+            .get_stories_by_labels_name('agenda,sobreagenda')
+        print(s_list)
+        self.view.window().show_quick_panel(
+            [story['name'] for story in s_list], self.on_select)
 
 
 class PluginUtils(object):
@@ -179,26 +234,6 @@ class PluginUtils(object):
         response = urlopen(req)
         data = response.read()
         return json.loads(data.decode('utf-8'))
-
-
-class Singleton(type):
-    """
-    Singleton Class
-    http://stackoverflow.com/questions/6760685/creating-a-singleton-in-python
-    """
-    _instances = {}
-    def __call__(cls, *args, **kwargs):
-        """
-        __call__
-
-        @param *args
-        @param **kwargs
-        """
-        if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, \
-                    **kwargs)
-        return cls._instances[cls]
-
 
 class StoryParser(object):
     """
@@ -294,4 +329,3 @@ class StoryParser(object):
             except (ValueError):
                 pass
         return it_text
-

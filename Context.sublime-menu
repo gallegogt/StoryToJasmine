@@ -12,5 +12,8 @@
   }, {
     "caption": "Set Plugin Options",
     "command": "story_to_jasmine_options"
+  }, {
+    "caption": "Story to Jasmine: Select project from list",
+    "command": "story_to_jasmine_select_project_from_list"
   }]
 }]
