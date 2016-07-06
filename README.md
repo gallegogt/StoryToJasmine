@@ -19,7 +19,7 @@ Make sure you use the right Sublime Text folder. For example, on OS X, packages 
 These are for Sublime Text 3:
 
 #### Mac
-`git clone https://github.com/gallegogt/StoryToJasmine.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/Sublime-JSHint`
+`git clone https://github.com/gallegogt/StoryToJasmine.git ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/StoryToJasmine`
 
 #### Linux
 `git clone https://github.com/gallegogt/StoryToJasmine.git ~/.config/sublime-text-3/Packages/StoryToJasmine`
