@@ -3,7 +3,7 @@
   "current_project": "",
 
   // default PivotalTracker Api Token
-  "pivotaltracker_api_token": "",
+  "pivotaltracker_api_token": "0d9fd4710ca1de1395e05ec0e3953f2d",
 
   // story keywords (change the keywords values for other languages)
   "word_Given": "Dado ",

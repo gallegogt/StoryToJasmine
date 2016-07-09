@@ -1,19 +1,29 @@
 [{
   "caption": "Story to Jasmine",
-  "children": [{
-    "caption": "Get story",
-    "command": "story_to_jasmine"
-  }, {
-    "caption": "Set project",
-    "command": "story_to_jasmine_project"
-  }, {
-    "caption": "Set PivotalTracker Api Token",
-    "command": "story_to_jasmine_apitoken"
-  }, {
-    "caption": "Set Plugin Options",
-    "command": "story_to_jasmine_options"
-  }, {
-    "caption": "Story to Jasmine: Select project from list",
-    "command": "story_to_jasmine_select_project_from_list"
-  }]
+  "children": [
+    {
+      "caption": "Get story",
+      "command": "story_to_jasmine"
+    },
+    {
+      "caption": "Set project",
+      "command": "story_to_jasmine_project"
+    },
+    {
+      "caption": "Set PivotalTracker Api Token",
+      "command": "story_to_jasmine_apitoken"
+    },
+    {
+      "caption": "Set Plugin Options",
+      "command": "story_to_jasmine_options"
+    },
+    {
+      "caption": "Select project from list",
+      "command": "story_to_jasmine_select_project_from_list"
+    },
+    {
+      "caption": "Search story",
+      "command": "story_to_jasmine_search"
+    }
+  ]
 }]
