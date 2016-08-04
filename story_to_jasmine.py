@@ -359,7 +359,8 @@ class PivotalTracker(object):
             project_id (str): Project ID
             query (str): Story ID
         """
-        url = PivotalTracker.API_PROJECT_SEARCH.format(project_id, query)
+        url = PivotalTracker.API_PROJECT_SEARCH.format(project_id, \
+            parse.quote_plus(query))
         return self.get_service_data(url)
 
 
