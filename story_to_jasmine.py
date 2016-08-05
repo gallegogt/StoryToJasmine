@@ -38,7 +38,7 @@ class PluginUtils(object):
     PLUGIN_FOLDER = osDirname(osRealPath(__file__))
 
     @staticmethod
-    def get_pref(key) -> str:
+    def get_pref(key, default = '') -> str:
         """Get preferences from plugin settings file
 
         Args:
@@ -48,7 +48,7 @@ class PluginUtils(object):
             The value of property key in the file. If the key not exist on
             settings file return empty string.
         """
-        return sublime.load_settings(PluginUtils.SETTINGS_FILE).get(key, '')
+        return sublime.load_settings(PluginUtils.SETTINGS_FILE).get(key, default)
 
     @staticmethod
     def set_pref(key, value):
@@ -92,14 +92,16 @@ class StoryParse(object):
         self.__describe_list = []
         self.__it_list = []
         self.__lang_tokens = {}
+
         self.__lang_tokens['word_given'] = \
-            PluginUtils.get_pref('word_Given').strip() + ' '
+            PluginUtils.get_pref('word_Given', [])
         self.__lang_tokens['word_and'] = \
-            PluginUtils.get_pref('word_And').strip() + ' '
+            PluginUtils.get_pref('word_And', [])
         self.__lang_tokens['word_when'] = \
-            PluginUtils.get_pref('word_When').strip() + ' '
+            PluginUtils.get_pref('word_When', [])
         self.__lang_tokens['word_then'] = \
-            PluginUtils.get_pref('word_Then').strip() + ' '
+            PluginUtils.get_pref('word_Then', [])
+
         self.__lang_tokens['it_template'] = \
             PluginUtils.get_pref('it_template')
         self.__lang_tokens['describe_template'] = \
@@ -116,18 +118,20 @@ class StoryParse(object):
         """
         description_list = story_text.split('\n')
         found_when = False
+        check = lambda row, data: \
+            len([w for w in data if row.startswith(w.strip() + ' ')]) > 0
         for row in description_list:
-            if row.startswith(self.__lang_tokens.get('word_given')):
+            if check(row, self.__lang_tokens.get('word_given')):
                 self.__describe_list.append(row)
-            elif row.startswith(self.__lang_tokens.get('word_and')):
+            elif check(row, self.__lang_tokens.get('word_and')):
                 if not found_when:
                     self.__describe_list.append(row)
                 else:
                     self.__it_list.append(row)
-            elif row.startswith(self.__lang_tokens.get('word_when')):
+            elif check(row, self.__lang_tokens.get('word_when')):
                 self.__describe_list.append(row)
                 found_when = True
-            elif row.startswith(self.__lang_tokens.get('word_then')):
+            elif check(row, self.__lang_tokens.get('word_then')):
                 self.__it_list.append(row)
 
         its = self.proccesing_it_list(str(story_id), \

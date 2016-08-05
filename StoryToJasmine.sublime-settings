@@ -3,15 +3,15 @@
   "current_project": "",
 
   // default PivotalTracker Api Token
-  "pivotaltracker_api_token": "0d9fd4710ca1de1395e05ec0e3953f2d",
+  "pivotaltracker_api_token": "50073abaa1c8f1b5f59efde024b7c3e4",
 
   // story keywords (change the keywords values for other languages)
-  "word_Given": "Dado ",
-  "word_And": "Y ",
-  "word_When": "Cuando ",
-  "word_Then": "Entonces ",
+  "word_Given": ["Dado"],
+  "word_And": ["Y"],
+  "word_When": ["Cuando", "Pero"],
+  "word_Then": ["Entonces"],
 
   // jasmine simple template
-  "describe_template": "describe('{0}', function() {{{1}}});",
-  "it_template": "it('{0} [ID:#{1}]', function() {2});\n\n"
+  "describe_template": "describe('{0}', () => {{{1}}});",
+  "it_template": "it('{0} [ID:#{1}]', () => {2});\n\n"
 }
