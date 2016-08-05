@@ -93,13 +93,13 @@ class StoryParse(object):
         self.__it_list = []
         self.__lang_tokens = {}
         self.__lang_tokens['word_given'] = \
-            PluginUtils.get_pref('word_Given').strip() + ' '
+            (PluginUtils.get_pref('word_Given') or '').strip() + ' '
         self.__lang_tokens['word_and'] = \
-            PluginUtils.get_pref('word_And').strip() + ' '
+            (PluginUtils.get_pref('word_And') or '').strip() + ' '
         self.__lang_tokens['word_when'] = \
-            PluginUtils.get_pref('word_When').strip() + ' '
+            (PluginUtils.get_pref('word_When') or '').strip() + ' '
         self.__lang_tokens['word_then'] = \
-            PluginUtils.get_pref('word_Then').strip() + ' '
+            (PluginUtils.get_pref('word_Then') or '').strip() + ' '
         self.__lang_tokens['it_template'] = \
             PluginUtils.get_pref('it_template')
         self.__lang_tokens['describe_template'] = \
