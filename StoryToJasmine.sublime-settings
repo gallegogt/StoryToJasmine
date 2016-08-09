@@ -12,6 +12,6 @@
   "word_Then": ["Entonces"],
 
   // jasmine simple template
-  "describe_template": "describe('{0}', () => {{{1}}});",
-  "it_template": "it('{0} [ID:#{1}]', () => {2});\n\n"
+  "describe_template": "describe('{0}', () => {{{1}}})",
+  "it_template": "it('{0} [ID:#{1}]', () => {2})\n\n"
 }
