@@ -8,6 +8,7 @@ and inserts it to the current document as a BDD spec.
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 from urllib import parse
+import sys
 from os.path import dirname as osDirname, realpath as osRealPath
 from json import loads as jsonLoads
 import sublime
@@ -94,13 +95,13 @@ class StoryParse(object):
         self.__lang_tokens = {}
 
         self.__lang_tokens['word_given'] = \
-            PluginUtils.get_pref('word_Given', [])
+            PluginUtils.get_pref('word_Given', ['Dado'])
         self.__lang_tokens['word_and'] = \
-            PluginUtils.get_pref('word_And', [])
+            PluginUtils.get_pref('word_And', ['Y'])
         self.__lang_tokens['word_when'] = \
-            PluginUtils.get_pref('word_When', [])
+            PluginUtils.get_pref('word_When', ['Cuando', 'Pero'])
         self.__lang_tokens['word_then'] = \
-            PluginUtils.get_pref('word_Then', [])
+            PluginUtils.get_pref('word_Then', ['Entonces'])
 
         self.__lang_tokens['it_template'] = \
             PluginUtils.get_pref('it_template')
@@ -754,7 +755,19 @@ class StoryToJasmineTestCommand(sublime_plugin.TextCommand):
         self.view.window().show_quick_panel(
             [story['name'] for story in s_list], self.on_select)
 
-#
-# When the script is loaded, the default values are loaded
-#
-story_to_bdd.load_default_values()
+
+def plugin_loaded():
+    """ When the script is loaded, the default values are loaded
+    """
+    story_to_bdd.load_default_values()
+    print('Plugin loaded.....!!!')
+
+def plugin_unloaded():
+    """ When the script is unloaded
+    """
+    pass
+
+# Compat with ST2
+if sys.version_info < (3,):
+    plugin_loaded()
+    unload_handler = plugin_unloaded
