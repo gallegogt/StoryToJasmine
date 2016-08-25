@@ -37,6 +37,7 @@ class PluginUtils(object):
     """
     SETTINGS_FILE = 'StoryToJasmine.sublime-settings'
     PLUGIN_FOLDER = osDirname(osRealPath(__file__))
+    LAST_SEACH_TERM = ''
 
     @staticmethod
     def get_pref(key, default = '') -> str:
@@ -99,7 +100,7 @@ class StoryParse(object):
         self.__lang_tokens['word_and'] = \
             PluginUtils.get_pref('word_And', ['Y'])
         self.__lang_tokens['word_when'] = \
-            PluginUtils.get_pref('word_When', ['Cuando', 'Pero'])
+            PluginUtils.get_pref('word_When', ['Cuando', 'Pero', 'Cuando,'])
         self.__lang_tokens['word_then'] = \
             PluginUtils.get_pref('word_Then', ['Entonces'])
 
@@ -716,6 +717,7 @@ class StoryToJasmineSearchCommand(sublime_plugin.TextCommand):
         Args:
             search (str): search query
         """
+        PluginUtils.LAST_SEACH_TERM = search
         s_list = story_to_bdd.get_stories_by_search(search)
         self.view.window().show_quick_panel( \
             [story['name'] for story in s_list], \
@@ -733,7 +735,7 @@ class StoryToJasmineSearchCommand(sublime_plugin.TextCommand):
         if file_name and str(file_name).endswith(".js"):
             # show field to input to obtaining Story ID
             self.view.window().show_input_panel('Search story', \
-                    '', self.on_done, None, None)
+                    PluginUtils.LAST_SEACH_TERM, self.on_done, None, None)
 
 
 class StoryToJasmineTestCommand(sublime_plugin.TextCommand):
